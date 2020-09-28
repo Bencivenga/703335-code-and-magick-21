@@ -36,8 +36,8 @@ const getMaxValue = (arr) => {
 
 // Получаем цвет столбца
 const getPlayerColor = (playerName) => {
-  return (playerName === 'Вы') ? 'rgba(255, 0, 0, 1)' :
-    'hsl(240, ' + (Math.floor(Math.random() * 100)) + '%, 50%)';
+  return (playerName === `Вы`) ? `rgba(255, 0, 0, 1)` :
+    `hsl(240, ` + (Math.floor(Math.random() * 100)) + `%, 50%)`;
 };
 
 // Построение гистограммы
@@ -48,19 +48,19 @@ const buildHistogram = (ctx, currentTime, currentName, maxTime, i) => {
   ctx.fillStyle = getPlayerColor(currentName);
   ctx.fillRect(BAR_X + i * BAR_INDENT, BAR_Y, BAR_WIDTH, barHeight * -1);
 
-  ctx.fillStyle = '#000';
+  ctx.fillStyle = `#000`;
   ctx.fillText(playerTime, BAR_X + i * BAR_INDENT, BAR_Y - barHeight - LINE_HEIGHT / 2);
   ctx.fillText(currentName, BAR_X + i * BAR_INDENT, BAR_Y + LINE_HEIGHT);
 };
 // Отрисовка статистики
 window.renderStatistics = (ctx, names, times) => {
-  renderCloud(ctx, CLOUD_X + CLOUD_GAP, CLOUD_Y + CLOUD_GAP, 'rgba(0, 0, 0, 0.7)');
-  renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
+  renderCloud(ctx, CLOUD_X + CLOUD_GAP, CLOUD_Y + CLOUD_GAP, `rgba(0, 0, 0, 0.7)`);
+  renderCloud(ctx, CLOUD_X, CLOUD_Y, `#fff`);
 
-  ctx.fillStyle = '#000';
-  ctx.font = '16px PT Mono';
-  ctx.fillText('Ура! Вы победили!', TEXT_X, TEXT_Y);
-  ctx.fillText('Список результатов:', TEXT_X, TEXT_Y + LINE_HEIGHT);
+  ctx.fillStyle = `#000`;
+  ctx.font = `16px PT Mono`;
+  ctx.fillText(`Ура! Вы победили!`, TEXT_X, TEXT_Y);
+  ctx.fillText(`Список результатов:`, TEXT_X, TEXT_Y + LINE_HEIGHT);
 
   let maxTime = getMaxValue(times);
 
